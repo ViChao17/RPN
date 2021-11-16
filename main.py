@@ -67,5 +67,29 @@ def to_polish_notation(input_list: list[str]):
     return output
 
 
+def calc(rpn: list) -> float:
+    stack = []
+    for el in rpn:
+        if type(el) == float:
+            stack.append(el)
+        else:
+            right: float = stack.pop()
+            left: float = stack.pop()
+            if el == '/':
+                stack.append(left/right)
+            if el == '*':
+                stack.append(left*right)
+            if el == '-':
+                stack.append(left-right)
+            if el == '+':
+                stack.append(left+right)
+            if el == '^':
+                stack.append(left**right)
+    return stack[0]
+
+
 parsed_input_string = parse_input_string(input_string)
-print(to_polish_notation(parsed_input_string))
+rpn_list = to_polish_notation(parsed_input_string)
+print(parsed_input_string)
+print(rpn_list)
+print(calc(rpn_list))
