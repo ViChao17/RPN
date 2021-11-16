@@ -90,6 +90,5 @@ def calc(rpn: list) -> float:
 
 parsed_input_string = parse_input_string(input_string)
 rpn_list = to_polish_notation(parsed_input_string)
-print(parsed_input_string)
-print(rpn_list)
-print(calc(rpn_list))
+result = calc(rpn_list)
+print(result)
